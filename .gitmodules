@@ -1,0 +1,24 @@
+[submodule "diagrams"]
+	path = diagrams
+	url = git@github.com:cchalmers/diagrams.git
+[submodule "geometry"]
+	path = geometry
+	url = git@github.com:diagrams/geometry.git
+[submodule "diagrams-solve"]
+	path = diagrams-solve
+	url = https://github.com/diagrams/diagrams-solve
+[submodule "diagrams-svg"]
+	path = diagrams-svg
+	url = git@github.com:diagrams/diagrams-svg.git
+[submodule "diagrams-pgf"]
+	path = diagrams-pgf
+	url = git@github.com:diagrams/diagrams-pgf.git
+[submodule "diagrams-rasterific"]
+	path = diagrams-rasterific
+	url = git@github.com:diagrams/diagrams-rasiterific.git
+[submodule "active"]
+	path = active
+	url = https://github.com/diagrams/active
+[submodule "monoid-extras"]
+	path = monoid-extras
+	url = https://github.com/diagrams/monoid-extras

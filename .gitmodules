@@ -20,7 +20,7 @@
   ignore=untracked
 [submodule "diagrams-rasterific"]
 	path = diagrams-rasterific
-	url = git@github.com:diagrams/diagrams-rasiterific.git
+	url = git@github.com:diagrams/diagrams-rasterific.git
   ignore=untracked
 [submodule "active"]
 	path = active

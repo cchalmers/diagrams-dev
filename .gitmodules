@@ -1,24 +1,56 @@
 [submodule "diagrams"]
 	path = diagrams
 	url = git@github.com:cchalmers/diagrams.git
+  ignore = untracked
 [submodule "geometry"]
 	path = geometry
 	url = git@github.com:diagrams/geometry.git
+  ignore=untracked
 [submodule "diagrams-solve"]
 	path = diagrams-solve
 	url = https://github.com/diagrams/diagrams-solve
+  ignore=untracked
 [submodule "diagrams-svg"]
 	path = diagrams-svg
 	url = git@github.com:diagrams/diagrams-svg.git
+  ignore=untracked
 [submodule "diagrams-pgf"]
 	path = diagrams-pgf
 	url = git@github.com:diagrams/diagrams-pgf.git
+  ignore=untracked
 [submodule "diagrams-rasterific"]
 	path = diagrams-rasterific
 	url = git@github.com:diagrams/diagrams-rasiterific.git
+  ignore=untracked
 [submodule "active"]
 	path = active
 	url = https://github.com/diagrams/active
+  ignore=untracked
 [submodule "monoid-extras"]
 	path = monoid-extras
 	url = https://github.com/diagrams/monoid-extras
+  ignore=untracked
+[submodule "diagrams-backend-tests"]
+	path = diagrams-backend-tests
+	url = git@github.com:diagrams/diagrams-backend-tests.git
+  ignore=untracked
+[submodule "potrace-diagrams"]
+	path = potrace-diagrams
+	url = git@github.com:diagrams/potrace-diagrams.git
+  ignore=untracked
+[submodule "force-layout"]
+	path = force-layout
+	url = git@github.com:diagrams/force-layout.git
+  ignore=untracked
+[submodule "diagrams-canvas"]
+	path = diagrams-canvas
+	url = git@github.com:diagrams/diagrams-canvas.git
+  ignore=untracked
+[submodule "diagrams-graphviz"]
+	path = diagrams-graphviz
+	url = git@github.com:diagrams/diagrams-graphviz.git
+  ignore=untracked
+[submodule "diagrams-contrib"]
+	path = diagrams-contrib
+	url = git@github.com:diagrams/diagrams-contrib.git
+  ignore=untracked

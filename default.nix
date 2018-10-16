@@ -17,6 +17,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       geometry       = drv "geometry" ./geometry;
       monoid-extras  = drv "monoid-extras" ./monoid-extras;
       plots  = drv "plots" ./plots;
+      letters  = drv "letters" ./letters;
     };
       overrides = self: super: diagramsPackages // {
         zeromq4-haskell = nixpkgs.haskell.lib.dontCheck super.zeromq4-haskell;

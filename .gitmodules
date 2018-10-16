@@ -60,3 +60,6 @@
 [submodule "plots"]
 	path = plots
 	url = git@github.com:cchalmers/plots.git
+[submodule "letters"]
+	path = letters
+	url = git@github.com:cchalmers/letters

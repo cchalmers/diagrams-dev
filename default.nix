@@ -11,6 +11,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       diagrams-svg   = drv "diagrams-svg" ./diagrams-svg;
       diagrams-rasterific   = drv "diagrams-rasterific" ./diagrams-rasterific;
       diagrams-backend-tests   = drv "diagrams-backend-tests" ./diagrams-backend-tests;
+      diagrams-graphviz   = drv "diagrams-graphviz" ./diagrams-graphviz;
       potrace-diagrams   = drv "potrace-diagrams" ./potrace-diagrams;
       geometry       = drv "geometry" ./geometry;
       monoid-extras  = drv "monoid-extras" ./monoid-extras;

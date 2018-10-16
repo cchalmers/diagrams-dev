@@ -54,3 +54,9 @@
 	path = diagrams-contrib
 	url = git@github.com:diagrams/diagrams-contrib.git
   ignore=untracked
+[submodule "ihaskell-diagrams"]
+	path = ihaskell-diagrams
+	url = git@github.com:cchalmers/ihaskell-diagrams.git
+[submodule "plots"]
+	path = plots
+	url = git@github.com:cchalmers/plots.git

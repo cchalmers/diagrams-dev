@@ -15,6 +15,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       potrace-diagrams   = drv "potrace-diagrams" ./potrace-diagrams;
       geometry       = drv "geometry" ./geometry;
       monoid-extras  = drv "monoid-extras" ./monoid-extras;
+      plots  = drv "plots" ./plots;
     };
     overrides = self: super: diagramsPackages;
     source-overrides = {};

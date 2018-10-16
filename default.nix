@@ -7,6 +7,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       diagrams-pgf   = drv "diagrams-pgf" ./diagrams-pgf;
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       force-layout= drv "force-layout" ./force-layout;
+      ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;
       diagrams-contrib = drv "diagrams-contrib" ./diagrams-contrib;
       diagrams-svg   = drv "diagrams-svg" ./diagrams-svg;
       diagrams-rasterific   = drv "diagrams-rasterific" ./diagrams-rasterific;
@@ -17,7 +18,9 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       monoid-extras  = drv "monoid-extras" ./monoid-extras;
       plots  = drv "plots" ./plots;
     };
-    overrides = self: super: diagramsPackages;
+      overrides = self: super: diagramsPackages // {
+        zeromq4-haskell = nixpkgs.haskell.lib.dontCheck super.zeromq4-haskell;
+      };
     source-overrides = {};
 
     filterHaskellSource = src:

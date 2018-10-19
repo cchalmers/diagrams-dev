@@ -36,7 +36,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
               [ "cabal.project.local" ".ghc.environment." ]
         ) src;
 
-    diaPkgs =
+    diapkgs =
       haskellPackages.extend (
         nixpkgs.lib.composeExtensions (
           haskellPackages.packageSourceOverrides source-overrides
@@ -44,6 +44,6 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       );
 
     # Normal nix derivation
-    drv = name: src: diaPkgs.callCabal2nix name (filterHaskellSource src) {};
+    drv = name: src: diapkgs.callCabal2nix name (filterHaskellSource src) {};
 
-in diagramsPackages
+in diapkgs

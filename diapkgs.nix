@@ -1,4 +1,4 @@
-{ lib, haskell, haskellPackages } :
+{ coreutils, lib, haskell, haskellPackages } :
 let diagramsPackages = {
       active         = drv "active" ./active;
       diagrams       = drv "diagrams" ./diagrams;
@@ -17,6 +17,19 @@ let diagramsPackages = {
       monoid-extras  = drv "monoid-extras" ./monoid-extras;
       plots  = drv "plots" ./plots;
       letters  = drv "letters" ./letters;
+      ihaskell = haskell.lib.overrideCabal haskellPackages.ihaskell
+                          (_drv: {
+        preCheck = ''
+          export HOME=$(${coreutils}/bin/mktemp -d)
+          export PATH=$PWD/dist/build/ihaskell:$PATH
+          export GHC_PACKAGE_PATH=$PWD/dist/package.conf.inplace/:$GHC_PACKAGE_PATH
+        '';
+        configureFlags = (_drv.configureFlags or []) ++ [
+          # otherwise the tests are agonisingly slow and the kernel times out
+          "--enable-executable-dynamic"
+        ];
+        doHaddock = false;
+      });
     };
       overrides = self: super: diagramsPackages // {
         zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;

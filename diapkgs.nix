@@ -5,6 +5,8 @@ let diagramsPackages = {
       diagrams-solve = drv "diagrams-solve" ./diagrams-solve;
       diagrams-pgf   = drv "diagrams-pgf" ./diagrams-pgf;
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
+      diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
+      diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
       force-layout= drv "force-layout" ./force-layout;
       ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;
       diagrams-contrib = drv "diagrams-contrib" ./diagrams-contrib;
@@ -57,4 +59,4 @@ let diagramsPackages = {
     # Normal nix derivation
     drv = name: src: diapkgs.callCabal2nix name (filterHaskellSource src) {};
 
-in diapkgs
+in { inherit diapkgs diagramsPackages; }

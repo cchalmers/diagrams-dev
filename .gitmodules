@@ -63,3 +63,10 @@
 [submodule "letters"]
 	path = letters
 	url = git@github.com:cchalmers/letters
+[submodule "diagrams-haddock"]
+	path = diagrams-haddock
+	url = git@github.com:diagrams/diagrams-haddock.git
+[submodule "diagrams-builder"]
+	path = diagrams-builder
+	url = git@github.com:diagrams/diagrams-builder
+	branch = diagrams-2.0

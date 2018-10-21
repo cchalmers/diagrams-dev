@@ -70,3 +70,9 @@
 	path = diagrams-builder
 	url = git@github.com:diagrams/diagrams-builder
 	branch = diagrams-2.0
+[submodule "diagrams-gl"]
+	path = diagrams-gl
+	url = git@github.com:cchalmers/diagrams-gl
+[submodule "diagrams-sdl"]
+	path = diagrams-sdl
+	url = git@github.com:cchalmers/diagrams-sdl

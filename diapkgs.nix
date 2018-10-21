@@ -1,4 +1,8 @@
-{ coreutils, lib, haskell, haskellPackages } :
+{ coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
+, lib ? (import nix/nixpkgs.nix {}).lib
+, haskell ? (import nix/nixpkgs.nix {}).haskell
+, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
+} :
 let diagramsPackages = {
       active         = drv "active" ./active;
       diagrams       = drv "diagrams" ./diagrams;
@@ -6,6 +10,8 @@ let diagramsPackages = {
       diagrams-pgf   = drv "diagrams-pgf" ./diagrams-pgf;
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
+      diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
+      diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
       force-layout= drv "force-layout" ./force-layout;
       ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;
@@ -21,6 +27,7 @@ let diagramsPackages = {
       letters  = drv "letters" ./letters;
     };
       overrides = self: super: diagramsPackages // {
+        sdl2 = haskell.lib.dontCheck super.sdl2;
         zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
         ihaskell = haskell.lib.overrideCabal super.ihaskell (_drv: {
           preCheck = ''

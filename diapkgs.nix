@@ -25,9 +25,11 @@ let diagramsPackages = {
       monoid-extras  = drv "monoid-extras" ./monoid-extras;
       plots  = drv "plots" ./plots;
       letters  = drv "letters" ./letters;
+      # nanovg  = drv "nanovg" ./nanovg;
     };
       overrides = self: super: diagramsPackages // {
         sdl2 = haskell.lib.dontCheck super.sdl2;
+        nanovg = haskell.lib.dontCheck super.nanovg;
         zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
         ihaskell = haskell.lib.overrideCabal super.ihaskell (_drv: {
           preCheck = ''

@@ -10,6 +10,7 @@ let diagramsPackages = {
       diagrams-pgf   = drv "diagrams-pgf" ./diagrams-pgf;
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
+      diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
       diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
       diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;

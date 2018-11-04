@@ -5,11 +5,10 @@ packages:
   ./diagrams-canvas/*.cabal
   ./diagrams-contrib/*.cabal
   ./diagrams-haddock/*.cabal
-  ./diagrams-haddock/*.cabal
   ./diagrams-pgf/*.cabal
   ./diagrams-rasterific/*.cabal
   ./diagrams-svg/*.cabal
+  ./diagrams-pandoc/*.cabal
   ./force-layout/*.cabal
   ./geometry/*.cabal
-  ./ihaskell-diagrams/*.cabal
   ./plots/*.cabal

@@ -8,13 +8,12 @@ let diapkgs = import ./diapkgs.nix {};
           p.diagrams-canvas
           p.diagrams-contrib
           p.diagrams-haddock
-          p.diagrams-haddock
+          p.diagrams-pandoc
           p.diagrams-pgf
           p.diagrams-rasterific
           p.diagrams-svg
           p.force-layout
           p.geometry
-          p.ihaskell-diagrams
           p.plots
         ];
     });

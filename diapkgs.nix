@@ -11,7 +11,10 @@ let diagramsPackages = {
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
       diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
-      diagrams-povray = drv "diagrams-povray" ./diagrams-povray;
+
+      diagrams-povray =
+        haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) povray;
+
       diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
       diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;

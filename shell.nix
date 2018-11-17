@@ -15,6 +15,7 @@ let diapkgs = import ./diapkgs.nix {};
           p.force-layout
           p.geometry
           p.plots
+          p.diagrams-povray
         ];
     });
 in env

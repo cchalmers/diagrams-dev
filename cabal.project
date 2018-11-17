@@ -5,6 +5,7 @@ packages:
   ./diagrams-canvas/*.cabal
   ./diagrams-contrib/*.cabal
   ./diagrams-haddock/*.cabal
+  ./diagrams-povray/*.cabal
   ./diagrams-pgf/*.cabal
   ./diagrams-rasterific/*.cabal
   ./diagrams-svg/*.cabal

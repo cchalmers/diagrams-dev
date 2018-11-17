@@ -79,3 +79,6 @@
 [submodule "diagrams-pandoc"]
 	path = diagrams-pandoc
 	url = git@github.com:diagrams/diagrams-pandoc.git
+[submodule "diagrams-povray"]
+	path = diagrams-povray
+	url = git@github.com:diagrams/diagrams-povray.git

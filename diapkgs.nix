@@ -11,6 +11,7 @@ let diagramsPackages = {
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
       diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
+      diagrams-povray = drv "diagrams-povray" ./diagrams-povray;
       diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
       diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
@@ -69,4 +70,6 @@ let diagramsPackages = {
     # Normal nix derivation
     drv = name: src: diapkgs.callCabal2nix name (filterHaskellSource src) {};
 
-in { inherit diapkgs diagramsPackages; }
+    povray = (import nix/nixpkgs.nix {}).pkgs.callPackage ./nix/povray.nix { };
+
+in { inherit diapkgs diagramsPackages povray; }

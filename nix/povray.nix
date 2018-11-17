@@ -46,6 +46,6 @@ stdenv.mkDerivation rec {
     homepage = http://www.povray.org/;
     description = "Persistence of Vision Raytracer";
     license = licenses.free;
-    platforms = [platforms.linux platforms.darwin];
+    platforms = platforms.linux ++ platforms.darwin;
   };
 }

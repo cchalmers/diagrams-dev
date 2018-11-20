@@ -8,7 +8,7 @@
   ignore=untracked
 [submodule "diagrams-solve"]
 	path = diagrams-solve
-	url = https://github.com/diagrams/diagrams-solve
+	url = git@github.com:diagrams/diagrams-solve
   ignore=untracked
 [submodule "diagrams-svg"]
 	path = diagrams-svg
@@ -24,11 +24,11 @@
   ignore=untracked
 [submodule "active"]
 	path = active
-	url = https://github.com/diagrams/active
+	url = git@github.com:diagrams/active
   ignore=untracked
 [submodule "monoid-extras"]
 	path = monoid-extras
-	url = https://github.com/diagrams/monoid-extras
+	url = git@github.com:diagrams/monoid-extras
   ignore=untracked
 [submodule "diagrams-backend-tests"]
 	path = diagrams-backend-tests

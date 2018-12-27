@@ -1,13 +1,22 @@
-{ coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
+{ mkDerivation ? (import nix/nixpkgs.nix {}).stdenv.mkDerivation
+, coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
 , lib ? (import nix/nixpkgs.nix {}).lib
 , haskell ? (import nix/nixpkgs.nix {}).haskell
 , haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
+, tex ? (import nix/nixpkgs.nix {}).texlive.combined.scheme-small
+, gs ? (import nix/nixpkgs.nix {}).ghostscript
+, rsvg ? (import nix/nixpkgs.nix {}).librsvg
+, imagemagick ? (import nix/nixpkgs.nix {}).imagemagick
 } :
 let diagramsPackages = {
       active         = drv "active" ./active;
       diagrams       = drv "diagrams" ./diagrams;
       diagrams-solve = drv "diagrams-solve" ./diagrams-solve;
-      diagrams-pgf   = drv "diagrams-pgf" ./diagrams-pgf;
+      diagrams-pgf   = haskell.lib.overrideCabal (drv "diagrams-pgf" ./diagrams-pgf)
+        (drv: {
+          postPatch = ''
+            sed -i -e 's:"pdflatex":"${tex}/bin/pdflatex":' src/Diagrams/Backend/PGF/Surface.hs'';
+        });
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
       diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
@@ -23,7 +32,16 @@ let diagramsPackages = {
       diagrams-contrib = drv "diagrams-contrib" ./diagrams-contrib;
       diagrams-svg   = drv "diagrams-svg" ./diagrams-svg;
       diagrams-rasterific   = drv "diagrams-rasterific" ./diagrams-rasterific;
-      diagrams-backend-tests   = drv "diagrams-backend-tests" ./diagrams-backend-tests;
+      diagrams-backend-tests   =
+        haskell.lib.overrideCabal
+          (drv "diagrams-backend-tests" ./diagrams-backend-tests)
+        (drv: {
+          postPatch = ''
+            sed -i -e 's:"gs":"${gs}/bin/gs":' src/Diagrams/Tests.hs
+            sed -i -e 's:"rsvg-convert":"${rsvg}/bin/rsvg-convert":' src/Diagrams/Tests.hs
+            sed -i -e 's:"convert":"${imagemagick}/bin/convert":' src/Diagrams/Tests.hs
+           '';
+        });
       diagrams-graphviz   = drv "diagrams-graphviz" ./diagrams-graphviz;
       potrace-diagrams   = drv "potrace-diagrams" ./potrace-diagrams;
       geometry       = drv "geometry" ./geometry;
@@ -75,4 +93,34 @@ let diagramsPackages = {
 
     povray = (import nix/nixpkgs.nix {}).pkgs.callPackage ./nix/povray.nix { };
 
-in { inherit diapkgs diagramsPackages povray; }
+    backend-test-refs = mkDerivation rec {
+      name = "backend-test-refs";
+      src  = ./diagrams-backend-tests/ref;
+      phases = ["installPhase"];
+      installPhase = ''
+        cp -r ${src} $out
+        '';
+    };
+
+    mkBackendTest = backend:
+      mkDerivation {
+        name = "backend-test-" + backend;
+        phases = ["buildPhase" "installPhase" "fixupPhase"];
+        propagatedBuildInputs =
+          # [diagramsPackages.diagrams-backend-tests];
+          [backend-test-refs];
+        buildPhase = ''
+          ${diagramsPackages.diagrams-backend-tests}/bin/test-${backend} "${backend-test-refs}"
+          '';
+        installPhase = ''
+          mkdir $out
+          mv ${backend} $out
+          mv ${backend}.html $out
+          '';
+      };
+
+    rasterific-test = mkBackendTest "rasterific";
+    testNames = ["rasterific" "pgf" "svg"];
+    tests = lib.genAttrs testNames mkBackendTest;
+
+in { inherit diapkgs diagramsPackages povray backend-test-refs tests; }

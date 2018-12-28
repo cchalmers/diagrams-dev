@@ -3,10 +3,7 @@
 , lib ? (import nix/nixpkgs.nix {}).lib
 , haskell ? (import nix/nixpkgs.nix {}).haskell
 , haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
-, tex ? (import nix/nixpkgs.nix {}).texlive.combined.scheme-small
-, gs ? (import nix/nixpkgs.nix {}).ghostscript
-, rsvg ? (import nix/nixpkgs.nix {}).librsvg
-, imagemagick ? (import nix/nixpkgs.nix {}).imagemagick
+, foreign ? (import ./nix/foreign.nix {})
 } :
 let diagramsPackages = {
       active         = drv "active" ./active;
@@ -15,7 +12,9 @@ let diagramsPackages = {
       diagrams-pgf   = haskell.lib.overrideCabal (drv "diagrams-pgf" ./diagrams-pgf)
         (drv: {
           postPatch = ''
-            sed -i -e 's:"pdflatex":"${tex}/bin/pdflatex":' src/Diagrams/Backend/PGF/Surface.hs'';
+            sed -i -e 's:"pdflatex":"${foreign.latex}/bin/pdflatex":' src/Diagrams/Backend/PGF/Surface.hs;
+            sed -i -e 's:"context":"${foreign.context}/bin/context":' src/Diagrams/Backend/PGF/Surface.hs
+          '';
         });
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
@@ -37,9 +36,9 @@ let diagramsPackages = {
           (drv "diagrams-backend-tests" ./diagrams-backend-tests)
         (drv: {
           postPatch = ''
-            sed -i -e 's:"gs":"${gs}/bin/gs":' src/Diagrams/Tests.hs
-            sed -i -e 's:"rsvg-convert":"${rsvg}/bin/rsvg-convert":' src/Diagrams/Tests.hs
-            sed -i -e 's:"convert":"${imagemagick}/bin/convert":' src/Diagrams/Tests.hs
+            sed -i -e 's:"gs":"${foreign.gs}/bin/gs":' src/Diagrams/Tests.hs
+            sed -i -e 's:"rsvg-convert":"${foreign.rsvg}/bin/rsvg-convert":' src/Diagrams/Tests.hs
+            sed -i -e 's:"convert":"${foreign.imagemagick}/bin/convert":' src/Diagrams/Tests.hs
            '';
         });
       diagrams-graphviz   = drv "diagrams-graphviz" ./diagrams-graphviz;
@@ -106,9 +105,7 @@ let diagramsPackages = {
       mkDerivation {
         name = "backend-test-" + backend;
         phases = ["buildPhase" "installPhase" "fixupPhase"];
-        propagatedBuildInputs =
-          # [diagramsPackages.diagrams-backend-tests];
-          [backend-test-refs];
+        propagatedBuildInputs = [backend-test-refs];
         buildPhase = ''
           ${diagramsPackages.diagrams-backend-tests}/bin/test-${backend} "${backend-test-refs}"
           '';

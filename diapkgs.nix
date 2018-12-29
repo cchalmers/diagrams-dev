@@ -21,7 +21,7 @@ let diagramsPackages = {
       diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
 
       diagrams-povray =
-        haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) povray;
+        haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) foreign.povray;
 
       diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
       diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
@@ -90,8 +90,6 @@ let diagramsPackages = {
     # Normal nix derivation
     drv = name: src: diapkgs.callCabal2nix name (filterHaskellSource src) {};
 
-    povray = (import nix/nixpkgs.nix {}).pkgs.callPackage ./nix/povray.nix { };
-
     backend-test-refs = mkDerivation rec {
       name = "backend-test-refs";
       src  = ./diagrams-backend-tests/ref;
@@ -120,4 +118,4 @@ let diagramsPackages = {
     testNames = ["rasterific" "pgf" "svg"];
     tests = lib.genAttrs testNames mkBackendTest;
 
-in { inherit diapkgs diagramsPackages povray backend-test-refs tests; }
+in { inherit diapkgs diagramsPackages foreign backend-test-refs tests; }

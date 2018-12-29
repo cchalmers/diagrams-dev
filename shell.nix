@@ -1,5 +1,7 @@
 let diapkgs = import ./diapkgs.nix {};
     env = (diapkgs.diapkgs.shellFor {
+      buildInputs =
+        [diapkgs.diapkgs.ghcid diapkgs.diapkgs.cabal-install];
       packages = p:
         [
           p.diagrams

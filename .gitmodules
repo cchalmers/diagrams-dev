@@ -1,84 +1,93 @@
 [submodule "diagrams"]
-	path = diagrams
-	url = ../../cchalmers/diagrams.git
+  path = diagrams
+  url = ../../cchalmers/diagrams.git
   ignore = untracked
 [submodule "geometry"]
-	path = geometry
-	url = ../../diagrams/geometry.git
-  ignore=untracked
+  path = geometry
+  url = ../../diagrams/geometry.git
+  ignore = untracked
 [submodule "diagrams-solve"]
-	path = diagrams-solve
-	url = ../../diagrams/diagrams-solve
-  ignore=untracked
+  path = diagrams-solve
+  url = ../../diagrams/diagrams-solve.git
+  ignore = untracked
 [submodule "diagrams-svg"]
-	path = diagrams-svg
-	url = ../../diagrams/diagrams-svg.git
-  ignore=untracked
+  path = diagrams-svg
+  url = ../../diagrams/diagrams-svg.git
+  ignore = untracked
 [submodule "diagrams-pgf"]
-	path = diagrams-pgf
-	url = ../../diagrams/diagrams-pgf.git
-  ignore=untracked
+  path = diagrams-pgf
+  url = ../../diagrams/diagrams-pgf.git
+  ignore = untracked
 [submodule "diagrams-rasterific"]
-	path = diagrams-rasterific
-	url = ../../diagrams/diagrams-rasterific.git
-  ignore=untracked
+  path = diagrams-rasterific
+  url = ../../diagrams/diagrams-rasterific.git
+  ignore = untracked
 [submodule "active"]
-	path = active
-	url = ../../diagrams/active
-  ignore=untracked
+  path = active
+  url = ../../diagrams/active.git
+  ignore = untracked
 [submodule "monoid-extras"]
-	path = monoid-extras
-	url = ../../diagrams/monoid-extras
-  ignore=untracked
+  path = monoid-extras
+  url = ../../diagrams/monoid-extras.git
+  ignore = untracked
 [submodule "diagrams-backend-tests"]
-	path = diagrams-backend-tests
-	url = ../../diagrams/diagrams-backend-tests.git
-  ignore=untracked
+  path = diagrams-backend-tests
+  url = ../../diagrams/diagrams-backend-tests.git
+  ignore = untracked
 [submodule "potrace-diagrams"]
-	path = potrace-diagrams
-	url = ../../diagrams/potrace-diagrams.git
-  ignore=untracked
+  path = potrace-diagrams
+  url = ../../diagrams/potrace-diagrams.git
+  ignore = untracked
 [submodule "force-layout"]
-	path = force-layout
-	url = ../../diagrams/force-layout.git
-  ignore=untracked
+  path = force-layout
+  url = ../../diagrams/force-layout.git
+  ignore = untracked
 [submodule "diagrams-canvas"]
-	path = diagrams-canvas
-	url = ../../diagrams/diagrams-canvas.git
-  ignore=untracked
+  path = diagrams-canvas
+  url = ../../diagrams/diagrams-canvas.git
+  ignore = untracked
 [submodule "diagrams-graphviz"]
-	path = diagrams-graphviz
-	url = ../../diagrams/diagrams-graphviz.git
-  ignore=untracked
+  path = diagrams-graphviz
+  url = ../../diagrams/diagrams-graphviz.git
+  ignore = untracked
 [submodule "diagrams-contrib"]
-	path = diagrams-contrib
-	url = ../../diagrams/diagrams-contrib.git
-  ignore=untracked
+  path = diagrams-contrib
+  url = ../../diagrams/diagrams-contrib.git
+  ignore = untracked
 [submodule "ihaskell-diagrams"]
-	path = ihaskell-diagrams
-	url = ../../cchalmers/ihaskell-diagrams.git
+  path = ihaskell-diagrams
+  url = ../../cchalmers/ihaskell-diagrams.git
+  ignore = untracked
 [submodule "plots"]
-	path = plots
-	url = ../../cchalmers/plots.git
+  path = plots
+  url = ../../cchalmers/plots.git
+  ignore = untracked
 [submodule "letters"]
-	path = letters
-	url = ../../cchalmers/letters
+  path = letters
+  url = ../../cchalmers/letters.git
+  ignore = untracked
 [submodule "diagrams-haddock"]
-	path = diagrams-haddock
-	url = ../../diagrams/diagrams-haddock.git
+  path = diagrams-haddock
+  url = ../../diagrams/diagrams-haddock.git
+  ignore = untracked
 [submodule "diagrams-builder"]
-	path = diagrams-builder
-	url = ../../diagrams/diagrams-builder
-	branch = diagrams-2.0
+  path = diagrams-builder
+  url = ../../diagrams/diagrams-builder.git
+  branch = diagrams-2.0
+  ignore = untracked
 [submodule "diagrams-gl"]
-	path = diagrams-gl
-	url = ../../cchalmers/diagrams-gl
+  path = diagrams-gl
+  url = ../../cchalmers/diagrams-gl.git
+  ignore = untracked
 [submodule "diagrams-sdl"]
-	path = diagrams-sdl
-	url = ../../cchalmers/diagrams-sdl
+  path = diagrams-sdl
+  url = ../../cchalmers/diagrams-sdl.git
+  ignore = untracked
 [submodule "diagrams-pandoc"]
-	path = diagrams-pandoc
-	url = ../../diagrams/diagrams-pandoc.git
+  path = diagrams-pandoc
+  url = ../../diagrams/diagrams-pandoc.git
+  ignore = untracked
 [submodule "diagrams-povray"]
-	path = diagrams-povray
-	url = ../../diagrams/diagrams-povray.git
+  path = diagrams-povray
+  url = ../../diagrams/diagrams-povray.git
+  ignore = untracked

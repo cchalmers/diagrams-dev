@@ -1,2 +1,2 @@
 language: nix
-script: nix-build -A diagrams-svg
+script: nix-build diapkgs.nix -A tests

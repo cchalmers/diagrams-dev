@@ -1,84 +1,84 @@
 [submodule "diagrams"]
 	path = diagrams
-	url = git@github.com:cchalmers/diagrams.git
+	url = ../../cchalmers/diagrams.git
   ignore = untracked
 [submodule "geometry"]
 	path = geometry
-	url = git@github.com:diagrams/geometry.git
+	url = ../../diagrams/geometry.git
   ignore=untracked
 [submodule "diagrams-solve"]
 	path = diagrams-solve
-	url = git@github.com:diagrams/diagrams-solve
+	url = ../../diagrams/diagrams-solve
   ignore=untracked
 [submodule "diagrams-svg"]
 	path = diagrams-svg
-	url = git@github.com:diagrams/diagrams-svg.git
+	url = ../../diagrams/diagrams-svg.git
   ignore=untracked
 [submodule "diagrams-pgf"]
 	path = diagrams-pgf
-	url = git@github.com:diagrams/diagrams-pgf.git
+	url = ../../diagrams/diagrams-pgf.git
   ignore=untracked
 [submodule "diagrams-rasterific"]
 	path = diagrams-rasterific
-	url = git@github.com:diagrams/diagrams-rasterific.git
+	url = ../../diagrams/diagrams-rasterific.git
   ignore=untracked
 [submodule "active"]
 	path = active
-	url = git@github.com:diagrams/active
+	url = ../../diagrams/active
   ignore=untracked
 [submodule "monoid-extras"]
 	path = monoid-extras
-	url = git@github.com:diagrams/monoid-extras
+	url = ../../diagrams/monoid-extras
   ignore=untracked
 [submodule "diagrams-backend-tests"]
 	path = diagrams-backend-tests
-	url = git@github.com:diagrams/diagrams-backend-tests.git
+	url = ../../diagrams/diagrams-backend-tests.git
   ignore=untracked
 [submodule "potrace-diagrams"]
 	path = potrace-diagrams
-	url = git@github.com:diagrams/potrace-diagrams.git
+	url = ../../diagrams/potrace-diagrams.git
   ignore=untracked
 [submodule "force-layout"]
 	path = force-layout
-	url = git@github.com:diagrams/force-layout.git
+	url = ../../diagrams/force-layout.git
   ignore=untracked
 [submodule "diagrams-canvas"]
 	path = diagrams-canvas
-	url = git@github.com:diagrams/diagrams-canvas.git
+	url = ../../diagrams/diagrams-canvas.git
   ignore=untracked
 [submodule "diagrams-graphviz"]
 	path = diagrams-graphviz
-	url = git@github.com:diagrams/diagrams-graphviz.git
+	url = ../../diagrams/diagrams-graphviz.git
   ignore=untracked
 [submodule "diagrams-contrib"]
 	path = diagrams-contrib
-	url = git@github.com:diagrams/diagrams-contrib.git
+	url = ../../diagrams/diagrams-contrib.git
   ignore=untracked
 [submodule "ihaskell-diagrams"]
 	path = ihaskell-diagrams
-	url = git@github.com:cchalmers/ihaskell-diagrams.git
+	url = ../../cchalmers/ihaskell-diagrams.git
 [submodule "plots"]
 	path = plots
-	url = git@github.com:cchalmers/plots.git
+	url = ../../cchalmers/plots.git
 [submodule "letters"]
 	path = letters
-	url = git@github.com:cchalmers/letters
+	url = ../../cchalmers/letters
 [submodule "diagrams-haddock"]
 	path = diagrams-haddock
-	url = git@github.com:diagrams/diagrams-haddock.git
+	url = ../../diagrams/diagrams-haddock.git
 [submodule "diagrams-builder"]
 	path = diagrams-builder
-	url = git@github.com:diagrams/diagrams-builder
+	url = ../../diagrams/diagrams-builder
 	branch = diagrams-2.0
 [submodule "diagrams-gl"]
 	path = diagrams-gl
-	url = git@github.com:cchalmers/diagrams-gl
+	url = ../../cchalmers/diagrams-gl
 [submodule "diagrams-sdl"]
 	path = diagrams-sdl
-	url = git@github.com:cchalmers/diagrams-sdl
+	url = ../../cchalmers/diagrams-sdl
 [submodule "diagrams-pandoc"]
 	path = diagrams-pandoc
-	url = git@github.com:diagrams/diagrams-pandoc.git
+	url = ../../diagrams/diagrams-pandoc.git
 [submodule "diagrams-povray"]
 	path = diagrams-povray
-	url = git@github.com:diagrams/diagrams-povray.git
+	url = ../../diagrams/diagrams-povray.git

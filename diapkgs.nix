@@ -118,4 +118,7 @@ let diagramsPackages = {
     testNames = ["rasterific" "pgf" "svg"];
     tests = lib.genAttrs testNames mkBackendTest;
 
-in { inherit diapkgs diagramsPackages foreign backend-test-refs tests; }
+    hoogle = diapkgs.hoogleLocal
+      { packages = [diagramsPackages.diagrams-backend-tests]; };
+
+in { inherit diapkgs diagramsPackages foreign backend-test-refs tests hoogle; }

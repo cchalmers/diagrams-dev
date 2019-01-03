@@ -7,6 +7,7 @@ let diapkgs = import ./diapkgs.nix {};
           p.diagrams
           p.diagrams-backend-tests
           p.diagrams-builder
+          p.diagrams-cairo
           p.diagrams-canvas
           p.diagrams-contrib
           p.diagrams-haddock

@@ -91,3 +91,7 @@
   path = diagrams-povray
   url = ../../diagrams/diagrams-povray.git
   ignore = untracked
+[submodule "diagrams-cairo"]
+  path = diagrams-cairo
+  url = ../../diagrams/diagrams-cairo.git
+  ignore = untracked

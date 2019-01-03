@@ -9,6 +9,7 @@ let diagramsPackages = {
       active         = drv "active" ./active;
       diagrams       = drv "diagrams" ./diagrams;
       diagrams-solve = drv "diagrams-solve" ./diagrams-solve;
+      diagrams-cairo = drv "diagrams-cairo" ./diagrams-cairo;
       diagrams-pgf   = haskell.lib.overrideCabal (drv "diagrams-pgf" ./diagrams-pgf)
         (drv: {
           postPatch = ''
@@ -115,10 +116,11 @@ let diagramsPackages = {
       };
 
     rasterific-test = mkBackendTest "rasterific";
-    testNames = ["rasterific" "pgf" "svg"];
+    testNames = ["cairo" "rasterific" "pgf" "svg"];
     tests = lib.genAttrs testNames mkBackendTest;
 
     hoogle = diapkgs.hoogleLocal
-      { packages = [diagramsPackages.diagrams-backend-tests]; };
+      { packages = [diagramsPackages.diagrams-backend-tests
+      diagramsPackages.diagrams-cairo]; };
 
 in { inherit diapkgs diagramsPackages foreign backend-test-refs tests hoogle; }

@@ -2,6 +2,7 @@ packages:
   ./diagrams/*.cabal
   ./diagrams-backend-tests/*.cabal
   ./diagrams-builder/*.cabal
+  ./diagrams-cairo/*.cabal
   ./diagrams-canvas/*.cabal
   ./diagrams-contrib/*.cabal
   ./diagrams-haddock/*.cabal

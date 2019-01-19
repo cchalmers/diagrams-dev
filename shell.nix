@@ -1,5 +1,6 @@
 let diapkgs = import ./diapkgs.nix {};
     env = (diapkgs.diapkgs.shellFor {
+      shellHook = "source helpers.sh";
       buildInputs =
         [diapkgs.diapkgs.ghcid diapkgs.diapkgs.cabal-install];
       packages = p:

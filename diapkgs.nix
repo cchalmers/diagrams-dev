@@ -91,27 +91,17 @@ let diagramsPackages = {
     # Normal nix derivation
     drv = name: src: diapkgs.callCabal2nix name (filterHaskellSource src) {};
 
-    backend-test-refs = mkDerivation rec {
-      name = "backend-test-refs";
-      src  = ./diagrams-backend-tests/ref;
-      phases = ["installPhase"];
-      installPhase = ''
-        cp -r ${src} $out
-        '';
-    };
-
     mkBackendTest = backend:
       mkDerivation {
         name = "backend-test-" + backend;
         phases = ["buildPhase" "installPhase" "fixupPhase"];
-        propagatedBuildInputs = [backend-test-refs];
+        propagatedBuildInputs =
+          [diagramsPackages.diagrams-backend-tests];
         buildPhase = ''
-          ${diagramsPackages.diagrams-backend-tests}/bin/test-${backend} "${backend-test-refs}"
+          ${diagramsPackages.diagrams-backend-tests}/bin/test-${backend}
           '';
         installPhase = ''
-          mkdir $out
-          mv ${backend} $out
-          mv ${backend}.html $out
+          mv ${backend}-tests $out
           '';
       };
 
@@ -121,6 +111,7 @@ let diagramsPackages = {
 
     hoogle = diapkgs.hoogleLocal
       { packages = [diagramsPackages.diagrams-backend-tests
+      diagramsPackages.diagrams-builder
       diagramsPackages.diagrams-cairo]; };
 
-in { inherit diapkgs diagramsPackages foreign backend-test-refs tests hoogle; }
+in { inherit diapkgs diagramsPackages foreign tests hoogle; }

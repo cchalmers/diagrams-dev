@@ -12,5 +12,6 @@ packages:
   ./diagrams-svg/*.cabal
   ./diagrams-pandoc/*.cabal
   ./force-layout/*.cabal
+  ./monoid-extras/*.cabal
   ./geometry/*.cabal
   ./plots/*.cabal

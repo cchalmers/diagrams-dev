@@ -4,11 +4,6 @@ function backend-test {
   ghcid -c "ghci $DIAGRAMS_IMPORTS $1 -idiagrams-backend-tests/src diagrams-backend-tests/tests/$2" -T ":main $3"
 }
 
-# function ghd(){
-#   run="ghcid --command \"cabal new-repl $@\""
-#   nix-shell -j8 --cores 8 --run "$run"
-# }
-
 function svg-tests {
   backend-test "-idiagrams-svg/src" "Svg.hs" "$*"
 }

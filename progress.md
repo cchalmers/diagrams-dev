@@ -29,10 +29,10 @@
 - diagrams-gl - very basic for now, not easy to get building
 - diagrams-glew - super basic 2d support, hard to get building
 - diagrams-sdl - only 3d support currently
+- diagrams-cairo
 
 ### Needs writing
 
-- diagrams-cairo
 - diagrams-gtk
 - diagrams-html5
 - diagrams-postscript

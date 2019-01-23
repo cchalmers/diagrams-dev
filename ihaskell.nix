@@ -5,6 +5,9 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
       inherit (nixpkgs) lib haskell;
       inherit haskellPackages;
     };
-    ihaskell = import ./build-ihaskell.nix { haskellPackages = diapkgs.diapkgs; };
+    ihaskell = import ./build-ihaskell.nix
+      { haskellPackages = diapkgs.diapkgs;
+        packages = p: [ p.diagrams-cairo ];
+      };
 
 in { inherit ihaskell; }

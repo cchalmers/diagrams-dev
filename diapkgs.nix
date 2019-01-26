@@ -4,8 +4,38 @@
 , haskell ? (import nix/nixpkgs.nix {}).haskell
 , haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
 , foreign ? (import ./nix/foreign.nix {})
+, srcOnly ? (import nix/nixpkgs.nix {}).srcOnly
+, fetchFromGitHub ? (import nix/nixpkgs.nix {}).fetchFromGitHub
 } :
-let diagramsPackages = {
+
+let ihaskellSrc = srcOnly {
+      name = "ihaskell-src";
+      src = fetchFromGitHub {
+         owner = "gibiansky";
+         repo = "IHaskell";
+         rev = "c070adf8828dad378bb0048483c16f2640a339b5";
+         sha256 = "1v8hvr75lg3353qgm18k43b3wl040zkbhkklw6ygv5w8zzb3x826";
+      };
+    };
+
+    diagramsPackages = {
+      ihaskell         =
+        haskell.lib.overrideCabal
+          (diapkgs.callCabal2nix "ihaskell" ihaskellSrc {})
+            (_drv: {
+              preCheck = ''
+                export HOME=$(${coreutils}/bin/mktemp -d)
+                export PATH=$PWD/dist/build/ihaskell:$PATH
+                export GHC_PACKAGE_PATH=$PWD/dist/package.conf.inplace/:$GHC_PACKAGE_PATH
+              '';
+              configureFlags = (_drv.configureFlags or []) ++ [
+                # otherwise the tests are agonisingly slow and the kernel times out
+                "--enable-executable-dynamic"
+              ];
+              doHaddock = false;
+            });
+      ipython-kernel   = diapkgs.callCabal2nix "ipython-kernel" "${ihaskellSrc}/ipython-kernel" {};
+      ghc-parser       = diapkgs.callCabal2nix "ghc-parser" "${ihaskellSrc}/ghc-parser" {};
       active         = drv "active" ./active;
       diagrams       = drv "diagrams" ./diagrams;
       diagrams-solve = drv "diagrams-solve" ./diagrams-solve;
@@ -54,18 +84,6 @@ let diagramsPackages = {
         sdl2 = haskell.lib.dontCheck super.sdl2;
         nanovg = haskell.lib.dontCheck super.nanovg;
         zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
-        ihaskell = haskell.lib.overrideCabal super.ihaskell (_drv: {
-          preCheck = ''
-            export HOME=$(${coreutils}/bin/mktemp -d)
-            export PATH=$PWD/dist/build/ihaskell:$PATH
-            export GHC_PACKAGE_PATH=$PWD/dist/package.conf.inplace/:$GHC_PACKAGE_PATH
-          '';
-          configureFlags = (_drv.configureFlags or []) ++ [
-            # otherwise the tests are agonisingly slow and the kernel times out
-            "--enable-executable-dynamic"
-          ];
-          doHaddock = false;
-        });
       };
     source-overrides = {};
 
@@ -114,4 +132,5 @@ let diagramsPackages = {
       diagramsPackages.diagrams-builder
       diagramsPackages.diagrams-cairo]; };
 
-in { inherit diapkgs diagramsPackages foreign tests hoogle; }
+in { inherit diapkgs diagramsPackages foreign tests hoogle
+ihaskellSrc ; }

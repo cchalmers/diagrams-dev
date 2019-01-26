@@ -7,7 +7,7 @@ let haskellPackages = nixpkgs.pkgs.haskell.packages.${compiler};
     };
     ihaskell = import ./build-ihaskell.nix
       { haskellPackages = diapkgs.diapkgs;
-        packages = p: [ p.diagrams-cairo ];
+        packages = p: [ p.ihaskell-diagrams p.diagrams-cairo ];
       };
 
 in { inherit ihaskell; }

@@ -11,6 +11,7 @@ packages:
   ./diagrams-rasterific/*.cabal
   ./diagrams-svg/*.cabal
   ./diagrams-pandoc/*.cabal
+  ./ihaskell-diagrams/*.cabal
   ./force-layout/*.cabal
   ./monoid-extras/*.cabal
   ./geometry/*.cabal

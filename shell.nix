@@ -16,6 +16,7 @@ let diapkgs = import ./diapkgs.nix {};
           p.diagrams-pgf
           p.diagrams-rasterific
           p.diagrams-svg
+          p.ihaskell-diagrams
           p.force-layout
           p.geometry
           p.plots

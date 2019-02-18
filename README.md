@@ -44,7 +44,7 @@ date.
 
 ### Jupyter
 
-You can get a Jupyter environment using ihaskell from a nix expression. The one-liner to get an ihaskell lab is (replace `lab` with `notebook` for a notebook):
+You can get a Jupyter environment using ihaskell from a nix expression.  First open a terminal and `cd` into the root directory of the `diagrams-dev` repository.  Then the one-liner to get an ihaskell lab is (replace `lab` with `notebook` for a notebook):
 
 ```
 $(nix-build --no-out-link ihaskell.nix)/bin/ihaskell-lab

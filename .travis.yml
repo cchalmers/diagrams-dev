@@ -4,6 +4,7 @@ script:
   - cachix use diagrams
   - cachix push diagrams --watch-store&
   - nix-build diapkgs.nix -A tests | cachix push diagrams
+  - nix-build shell-complete.nix | cachix push diagrams
 env:
   global:
     secure: S6iBLCAViFA9bOqNZFZF1nKq0ZzVlZvx7sHWtoPR6T6NpVw9qdMTsW5F1sLuZGwoKw612TbI/7EeFuMXtauRHxfLATKQr009NlAA3/WFCgTAfgRk2QadT8soQ2mpB3s1WecKOATZdIGiB6nVf/6RAAyPIYmeXqBj0nQNoK9brM8hEioLtFmY7rXd/h0/NuUHoVXn+IhAaEu6krTongIZjXuiP2JIvu6GmqRSVfPAToA0B0gcVZz0mVQzd5CB8D8QHiQF47S5rwifc+mxpltGGzTz5gpdRv1dCz7hcumUdHma0laeQ+uwBTLwDgjCG7/r9zDkVv44qvZHHinsC3NpkRl1PmQ8Je4i9lQ166pK+KTFB2nMb4yReZYfoKLAFv4Rv0OTsZFAPVzaVpCJeKxgsK8B7L3ikjyWL3PQMQdueUPUyS34Y8qc0LFT0a9j4DEY+Z/Bhj2JNvxl+aSLt3z4TniMeWwcgATFu/1lkPRv+t8FrHX/WLsZOtOoMi2sdHd2L37o3AZiL2spnS9/VbzbRgm3OQMujakkNhNI8gXWUEd+ZF/q+DeVChgU9QcUluESc3RhgjiHC2I61k+LD/w2ODvmR8AYjAj6jpU5lz9lJ3EQzkHd2PzlYUDmRho0Xmgx85PcJ3/Aqtb3qmihpS6WsLcp9bMz7CPYqAK+bpKws8A=

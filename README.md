@@ -12,7 +12,8 @@ To clone this repository and all the submodules run
 git clone git@github.com:cchalmers/diagrams-dev --recursive
 ```
 
-To update the submodules you can run
+After cloning the repository, you also need to update the submodules by
+running
 
 ```
 git submodule update --init --recursive

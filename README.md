@@ -64,7 +64,7 @@ square 3 # fc dodgerblue :: Diagram V2
 The nix shell provides an environment with all the external dependencies of diagrams as well as cabal-install and ghcid. To get a ghcid for the diagrams-svg package you can run;
 
 ```
-nix-shell
+nix-shell --pure
 cd diagrams-svg
 ghcid -c "cabal new-repl"
 cabal new-build

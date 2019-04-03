@@ -2,7 +2,7 @@
 , coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
 , lib ? (import nix/nixpkgs.nix {}).lib
 , haskell ? (import nix/nixpkgs.nix {}).haskell
-, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
+, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc864
 , foreign ? (import ./nix/foreign.nix {})
 , srcOnly ? (import nix/nixpkgs.nix {}).srcOnly
 , fetchFromGitHub ? (import nix/nixpkgs.nix {}).fetchFromGitHub
@@ -13,8 +13,8 @@ let ihaskellSrc = srcOnly {
       src = fetchFromGitHub {
          owner = "gibiansky";
          repo = "IHaskell";
-         rev = "c070adf8828dad378bb0048483c16f2640a339b5";
-         sha256 = "1v8hvr75lg3353qgm18k43b3wl040zkbhkklw6ygv5w8zzb3x826";
+         rev = "8e8089dd43dc5f715ddcaa06b252d494112b8657";
+         sha256 = "0hvzsfgf3kizciwdl2ra93s0q7m1fi3fg1sak1vphzfmzhcpp7a6";
       };
     };
 
@@ -79,11 +79,15 @@ let ihaskellSrc = srcOnly {
       plots  = drv "plots" ./plots;
       letters  = drv "letters" ./letters;
       # nanovg  = drv "nanovg" ./nanovg;
+        # haskell-src-meta = drv "haskell-src-meta" ./haskell-src-meta;
     };
       overrides = self: super: diagramsPackages // {
         sdl2 = haskell.lib.dontCheck super.sdl2;
         nanovg = haskell.lib.dontCheck super.nanovg;
-        zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
+        haskell-src-exts = self.haskell-src-exts_1_21_0;
+        # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
+        zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
+        # haskell-src-meta = haskell.lib.doJailbreak super.haskell-src-meta;
       };
     source-overrides = {};
 

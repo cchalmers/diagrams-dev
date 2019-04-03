@@ -95,3 +95,6 @@
   path = diagrams-cairo
   url = ../../diagrams/diagrams-cairo.git
   ignore = untracked
+[submodule "haskell-src-meta"]
+	path = haskell-src-meta
+	url = git@github.com:cchalmers/haskell-src-meta

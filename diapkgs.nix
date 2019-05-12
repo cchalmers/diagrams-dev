@@ -54,8 +54,8 @@ let ihaskellSrc = srcOnly {
       diagrams-povray =
         haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) foreign.povray;
 
-      diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
-      diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
+      # diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
+      # diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
       force-layout= drv "force-layout" ./force-layout;
       ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;

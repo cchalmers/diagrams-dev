@@ -85,6 +85,11 @@ let ihaskellSrc = srcOnly {
         sdl2 = haskell.lib.dontCheck super.sdl2;
         nanovg = haskell.lib.dontCheck super.nanovg;
         haskell-src-exts = self.haskell-src-exts_1_21_0;
+        haskell-src-exts-simple = self.callHackageDirect {
+          pkg = "haskell-src-exts-simple";
+          ver = "1.21.0.0";
+          sha256 = "1kz009a24p6j91klmh7s98sal9zdqp7pygj2qghn71kqswz5a11h";}
+          {};
         # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
         zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
         # haskell-src-meta = haskell.lib.doJailbreak super.haskell-src-meta;

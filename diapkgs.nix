@@ -79,7 +79,6 @@ let ihaskellSrc = srcOnly {
       plots  = drv "plots" ./plots;
       letters  = drv "letters" ./letters;
       # nanovg  = drv "nanovg" ./nanovg;
-        # haskell-src-meta = drv "haskell-src-meta" ./haskell-src-meta;
     };
       overrides = self: super: diagramsPackages // {
         sdl2 = haskell.lib.dontCheck super.sdl2;
@@ -92,7 +91,6 @@ let ihaskellSrc = srcOnly {
           {};
         # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
         zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
-        # haskell-src-meta = haskell.lib.doJailbreak super.haskell-src-meta;
       };
     source-overrides = {};
 

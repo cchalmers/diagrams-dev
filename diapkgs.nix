@@ -49,7 +49,7 @@ let ihaskellSrc = srcOnly {
         });
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
-      diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
+      # diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
 
       diagrams-povray =
         haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) foreign.povray;

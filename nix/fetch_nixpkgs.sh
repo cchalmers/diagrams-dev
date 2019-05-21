@@ -9,7 +9,7 @@ set -e
 
 API="https://api.github.com/repos"
 REPO="nixpkgs-channels"
-BRANCH="nixos-18.09"
+BRANCH="nixos-19.03"
 URL="https://github.com/nixos/${REPO}"
 
 if [[ "x$1" == "x" ]]; then

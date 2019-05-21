@@ -1,4 +1,4 @@
-{ compiler ? "ghc843"
+{ compiler ? "ghc864"
 , nixpkgs ? import <nixpkgs> {}
 , haskellPackages
 , packages ? (_: [])

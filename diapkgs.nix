@@ -2,7 +2,7 @@
 , coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
 , lib ? (import nix/nixpkgs.nix {}).lib
 , haskell ? (import nix/nixpkgs.nix {}).haskell
-, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc843
+, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc864
 , foreign ? (import ./nix/foreign.nix {})
 , srcOnly ? (import nix/nixpkgs.nix {}).srcOnly
 , fetchFromGitHub ? (import nix/nixpkgs.nix {}).fetchFromGitHub
@@ -13,8 +13,8 @@ let ihaskellSrc = srcOnly {
       src = fetchFromGitHub {
          owner = "gibiansky";
          repo = "IHaskell";
-         rev = "c070adf8828dad378bb0048483c16f2640a339b5";
-         sha256 = "1v8hvr75lg3353qgm18k43b3wl040zkbhkklw6ygv5w8zzb3x826";
+         rev = "8e8089dd43dc5f715ddcaa06b252d494112b8657";
+         sha256 = "0hvzsfgf3kizciwdl2ra93s0q7m1fi3fg1sak1vphzfmzhcpp7a6";
       };
     };
 
@@ -49,13 +49,13 @@ let ihaskellSrc = srcOnly {
         });
       diagrams-canvas= drv "diagrams-canvas" ./diagrams-canvas;
       diagrams-haddock = drv "diagrams-haddock" ./diagrams-haddock;
-      diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
+      # diagrams-pandoc = drv "diagrams-pandoc" ./diagrams-pandoc;
 
       diagrams-povray =
         haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) foreign.povray;
 
-      diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
-      diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
+      # diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
+      # diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
       force-layout= drv "force-layout" ./force-layout;
       ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;
@@ -83,7 +83,14 @@ let ihaskellSrc = srcOnly {
       overrides = self: super: diagramsPackages // {
         sdl2 = haskell.lib.dontCheck super.sdl2;
         nanovg = haskell.lib.dontCheck super.nanovg;
-        zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
+        haskell-src-exts = self.haskell-src-exts_1_21_0;
+        haskell-src-exts-simple = self.callHackageDirect {
+          pkg = "haskell-src-exts-simple";
+          ver = "1.21.0.0";
+          sha256 = "1kz009a24p6j91klmh7s98sal9zdqp7pygj2qghn71kqswz5a11h";}
+          {};
+        # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
+        zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
       };
     source-overrides = {};
 

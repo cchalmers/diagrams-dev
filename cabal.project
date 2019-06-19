@@ -10,7 +10,7 @@ packages:
   ./diagrams-pgf/*.cabal
   ./diagrams-rasterific/*.cabal
   ./diagrams-svg/*.cabal
-  ./diagrams-pandoc/*.cabal
+  -- ./diagrams-pandoc/*.cabal
   ./ihaskell-diagrams/*.cabal
   ./force-layout/*.cabal
   ./monoid-extras/*.cabal

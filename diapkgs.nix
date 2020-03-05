@@ -2,10 +2,11 @@
 , coreutils ? (import nix/nixpkgs.nix {}).pkgs.coreutils
 , lib ? (import nix/nixpkgs.nix {}).lib
 , haskell ? (import nix/nixpkgs.nix {}).haskell
-, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc864
+, haskellPackages ? (import nix/nixpkgs.nix {}).pkgs.haskell.packages.ghc882
 , foreign ? (import ./nix/foreign.nix {})
 , srcOnly ? (import nix/nixpkgs.nix {}).srcOnly
 , fetchFromGitHub ? (import nix/nixpkgs.nix {}).fetchFromGitHub
+, callPackage ? (import nix/nixpkgs.nix {}).callPackage
 } :
 
 let ihaskellSrc = srcOnly {
@@ -13,9 +14,16 @@ let ihaskellSrc = srcOnly {
       src = fetchFromGitHub {
          owner = "gibiansky";
          repo = "IHaskell";
-         rev = "8e8089dd43dc5f715ddcaa06b252d494112b8657";
-         sha256 = "0hvzsfgf3kizciwdl2ra93s0q7m1fi3fg1sak1vphzfmzhcpp7a6";
+         rev = "9dd237ea0480302fd7a34c0eeef0fe97bca3ae1a";
+         sha256 = "1a8m2yi173j5cmj6698bx8fdzlk0x76zp9yn4la76vlyznhqvxfh";
       };
+    };
+
+    ihaskell = import "${ihaskellSrc}/release.nix" {
+      compiler = "ghc886";
+      nixpkgs = import nix/nixpkgs.nix {};
+      packages = p: p.ihaskell-diagrams;
+      rtsopts = "-M3g -N2";
     };
 
     diagramsPackages = {
@@ -80,18 +88,35 @@ let ihaskellSrc = srcOnly {
       letters  = drv "letters" ./letters;
       # nanovg  = drv "nanovg" ./nanovg;
     };
-      overrides = self: super: diagramsPackages // {
-        sdl2 = haskell.lib.dontCheck super.sdl2;
-        nanovg = haskell.lib.dontCheck super.nanovg;
-        haskell-src-exts = self.haskell-src-exts_1_21_0;
-        haskell-src-exts-simple = self.callHackageDirect {
-          pkg = "haskell-src-exts-simple";
-          ver = "1.21.0.0";
-          sha256 = "1kz009a24p6j91klmh7s98sal9zdqp7pygj2qghn71kqswz5a11h";}
-          {};
-        # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
-        zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
-      };
+    overrides = self: super:
+      diagramsPackages //
+        callPackage nix/haskell-overrides.nix {} self super;
+        # circle-packing = haskell.lib.doJailbreak super.circle-packing;
+        # microlens = self.callHackageDirect {
+        #   pkg = "microlens";
+        #   ver = "0.4.11.2";
+        #   sha256 = "0sdww9zq7z3l55n3rajk0cgm2w4cs2ph01aikv0r1crgabg4dqgb";}
+        #   {};
+
+        # inspection-testing = haskell.lib.doJailbreak super.inspection-testing;
+        # sdl2 = haskell.lib.dontCheck super.sdl2;
+        # nanovg = haskell.lib.dontCheck super.nanovg;
+
+        # haskell-src-exts = self.callHackageDirect {
+        #   pkg = "haskell-src-exts";
+        #   ver = "1.22.0";
+        #   sha256 = "1w1fzpid798b5h090pwpz7n4yyxw4hq3l4r493ygyr879dvjlr8d";}
+        #   {};
+
+        # haskell-src-exts-simple = self.callHackageDirect {
+        #   pkg = "haskell-src-exts-simple";
+        #   ver = "1.22.0.0";
+        #   sha256 = "1ixx2bpc7g6lclzrdjrnyf026g581rwm0iji1mn1iv03yzl3y215";}
+        #   {};
+
+        # # zeromq4-haskell = haskell.lib.dontCheck super.zeromq4-haskell;
+        # zeromq4-haskell = self.callHackage "zeromq4-haskell" "0.8.0" {};
+      # };
     source-overrides = {};
 
     filterHaskellSource = src:

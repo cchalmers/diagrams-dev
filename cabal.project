@@ -1,17 +1,21 @@
 packages:
   ./diagrams/*.cabal
+  ./active/*.cabal
   ./diagrams-backend-tests/*.cabal
   ./diagrams-builder/*.cabal
   ./diagrams-cairo/*.cabal
   ./diagrams-canvas/*.cabal
   ./diagrams-contrib/*.cabal
+  ./diagrams-gl/*.cabal
   ./diagrams-haddock/*.cabal
   ./diagrams-povray/*.cabal
   ./diagrams-pgf/*.cabal
   ./diagrams-rasterific/*.cabal
+  ./diagrams-sdl/*.cabal
   ./diagrams-svg/*.cabal
   -- ./diagrams-pandoc/*.cabal
   ./ihaskell-diagrams/*.cabal
+  ./letters/*.cabal
   ./force-layout/*.cabal
   ./monoid-extras/*.cabal
   ./geometry/*.cabal

@@ -7,6 +7,7 @@
 , srcOnly ? (import nix/nixpkgs.nix {}).srcOnly
 , fetchFromGitHub ? (import nix/nixpkgs.nix {}).fetchFromGitHub
 , callPackage ? (import nix/nixpkgs.nix {}).callPackage
+, nixpkgs ? import nix/nixpkgs.nix {}
 } :
 
 let ihaskellSrc = srcOnly {
@@ -44,7 +45,7 @@ let ihaskellSrc = srcOnly {
             });
       ipython-kernel   = diapkgs.callCabal2nix "ipython-kernel" "${ihaskellSrc}/ipython-kernel" {};
       ghc-parser       = diapkgs.callCabal2nix "ghc-parser" "${ihaskellSrc}/ghc-parser" {};
-      active         = drv "active" ./active;
+      active         = haskell.lib.dontCheck (drv "active" ./active);
       diagrams       = drv "diagrams" ./diagrams;
       diagrams-solve = drv "diagrams-solve" ./diagrams-solve;
       diagrams-cairo = drv "diagrams-cairo" ./diagrams-cairo;
@@ -62,8 +63,8 @@ let ihaskellSrc = srcOnly {
       diagrams-povray =
         haskell.lib.addBuildDepend (drv "diagrams-povray" ./diagrams-povray) foreign.povray;
 
-      # diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
-      # diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
+      diagrams-gl = drv "diagrams-gl" ./diagrams-gl;
+      diagrams-sdl = drv "diagrams-sdl" ./diagrams-sdl;
       diagrams-builder = drv "diagrams-builder" ./diagrams-builder;
       force-layout= drv "force-layout" ./force-layout;
       ihaskell-diagrams   = drv "ihaskell-diagrams" ./ihaskell-diagrams;
@@ -90,13 +91,14 @@ let ihaskellSrc = srcOnly {
     };
     overrides = self: super:
       diagramsPackages //
-        callPackage nix/haskell-overrides.nix {} self super;
+        callPackage nix/haskell-overrides.nix { inherit foreign; } self super;
         # circle-packing = haskell.lib.doJailbreak super.circle-packing;
         # microlens = self.callHackageDirect {
         #   pkg = "microlens";
         #   ver = "0.4.11.2";
         #   sha256 = "0sdww9zq7z3l55n3rajk0cgm2w4cs2ph01aikv0r1crgabg4dqgb";}
         #   {};
+
 
         # inspection-testing = haskell.lib.doJailbreak super.inspection-testing;
         # sdl2 = haskell.lib.dontCheck super.sdl2;

@@ -43,6 +43,12 @@ in self: super: {
     sha256 = "1ixx2bpc7g6lclzrdjrnyf026g581rwm0iji1mn1iv03yzl3y215";}
     {};
 
+  inline-c = super.callHackageDirect {
+    pkg = "inline-c";
+    ver = "0.9.0.0";
+    sha256 = "07i75g55ffggj9n7f5y6cqb0n17da53f1v03m9by7s4fnipxny5m";}
+    {};
+
   # callCabal2nix gets confused which glib and pango to use
   glib = (self.callCabal2nix "glib" "${gtk2hs-src}/glib" {})
     .overrideDerivation (_: {
